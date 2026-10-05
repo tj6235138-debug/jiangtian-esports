@@ -4,6 +4,10 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
 <meta name="theme-color" content="#08090c">
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="Expires" content="0">
+
 <title>姜天电竞</title>
 
 <script src="https://telegram.org/js/telegram-web-app.js"></script>
@@ -14,6 +18,7 @@
   --card:#111318;
   --card2:#171a20;
   --gold:#f2c75c;
+  --gold2:#ffd65e;
   --text:#f5f5f5;
   --muted:#8e939d;
   --line:#262a33;
@@ -21,185 +26,824 @@
   --red:#ff5c5c;
   --blue:#55a8ff;
 }
-*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
-body{
-  margin:0;background:var(--bg);color:var(--text);
-  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",Arial,sans-serif;
-  padding-bottom:85px;
-}
-button,input{font:inherit}
-button{cursor:pointer}
-.app{max-width:620px;margin:auto;min-height:100vh}
 
-.header{padding:20px 20px 14px;border-bottom:1px solid var(--line)}
-.brandrow{display:flex;align-items:center;justify-content:space-between}
-.brand{display:flex;align-items:center;gap:12px}
+*{
+  box-sizing:border-box;
+  -webkit-tap-highlight-color:transparent;
+}
+
+body{
+  margin:0;
+  background:var(--bg);
+  color:var(--text);
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",Arial,sans-serif;
+  padding-bottom:88px;
+}
+
+button,input{
+  font:inherit;
+}
+
+button{
+  cursor:pointer;
+}
+
+.app{
+  max-width:620px;
+  margin:auto;
+  min-height:100vh;
+}
+
+/* 顶部 */
+
+.header{
+  padding:18px 18px 13px;
+  border-bottom:1px solid var(--line);
+  background:#090a0d;
+}
+
+.brandrow{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+}
+
+.brand{
+  display:flex;
+  align-items:center;
+  gap:11px;
+}
+
 .logo{
-  width:52px;height:52px;border-radius:16px;display:flex;align-items:center;justify-content:center;
-  background:linear-gradient(135deg,#ffd966,#d59e20);color:#111;font-size:28px;font-weight:900
+  width:50px;
+  height:50px;
+  border-radius:16px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:linear-gradient(135deg,#ffe075,#d99f20);
+  color:#111;
+  font-size:27px;
+  font-weight:900;
+  box-shadow:0 8px 30px rgba(242,199,92,.12);
 }
-.brand-title{font-size:23px;font-weight:800}
-.brand-sub{margin-top:4px;color:var(--muted);font-size:11px;letter-spacing:2px}
-.userbox{display:flex;align-items:center;gap:8px}
-.username{font-size:13px;color:#ddd;max-width:105px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-.avatar{width:42px;height:42px;border-radius:50%;border:1px solid #5c4930;object-fit:cover;background:#252832}
+
+.brand-title{
+  font-size:22px;
+  font-weight:900;
+}
+
+.brand-sub{
+  margin-top:3px;
+  color:#777d87;
+  font-size:10px;
+  letter-spacing:1.7px;
+}
+
+.userbox{
+  display:flex;
+  align-items:center;
+  gap:8px;
+}
+
+.username{
+  max-width:95px;
+  overflow:hidden;
+  text-overflow:ellipsis;
+  white-space:nowrap;
+  font-size:12px;
+  color:#d8d8d8;
+}
+
+.avatar,
 .avatar-fallback{
-  width:42px;height:42px;border-radius:50%;background:#282b32;display:flex;align-items:center;
-  justify-content:center;font-weight:800;color:var(--gold);border:1px solid #5c4930
+  width:40px;
+  height:40px;
+  border-radius:50%;
+  border:1px solid #5c4930;
 }
+
+.avatar{
+  object-fit:cover;
+}
+
+.avatar-fallback{
+  background:#252832;
+  color:#ffd45d;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-weight:900;
+}
+
+/* 余额 */
 
 .balance-card{
-  margin:18px 20px;padding:22px;border-radius:25px;border:1px solid #5b4720;
-  background:radial-gradient(circle at top right,rgba(242,199,92,.14),transparent 40%),
-  linear-gradient(135deg,#15171b,#101115)
+  margin:17px 18px;
+  padding:21px;
+  border-radius:23px;
+  border:1px solid #5b4720;
+  background:
+    radial-gradient(circle at top right,rgba(242,199,92,.15),transparent 38%),
+    linear-gradient(135deg,#16181d,#101115);
 }
-.small{color:#c8ccd4;font-size:14px}
-.demo{margin-left:6px;padding:3px 7px;border-radius:6px;color:#f7ce55;background:#312b1c;font-size:11px}
-.balance{margin-top:18px;font-size:24px;font-weight:900;color:#ffd25d;letter-spacing:1px}
-.balance-actions{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:22px}
-.btn{border:0;border-radius:15px;padding:14px 10px;font-weight:800}
-.btn-gold{background:linear-gradient(135deg,#ffd665,#e8b63c);color:#111}
-.btn-dark{background:#252832;color:white}
+
+.small{
+  color:#b9bec7;
+  font-size:13px;
+}
+
+.demo{
+  margin-left:5px;
+  padding:3px 7px;
+  border-radius:7px;
+  background:#30291a;
+  color:#ffd45d;
+  font-size:10px;
+}
+
+.balance{
+  margin-top:14px;
+  color:#ffd45d;
+  font-size:25px;
+  font-weight:900;
+}
+
+.balance-actions{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:10px;
+  margin-top:19px;
+}
+
+.btn{
+  border:0;
+  border-radius:14px;
+  padding:13px 10px;
+  font-weight:800;
+}
+
+.btn-gold{
+  color:#111;
+  background:linear-gradient(135deg,#ffda68,#e7ae31);
+}
+
+.btn-dark{
+  color:#fff;
+  background:#252832;
+}
+
+/* 状态 */
 
 .statusbar{
-  margin:0 20px 16px;padding:13px 16px;background:#111318;border:1px solid var(--line);
-  border-radius:17px;color:#bbbfc7;font-size:13px
+  margin:0 18px 14px;
+  padding:12px 15px;
+  border:1px solid var(--line);
+  border-radius:15px;
+  background:#111318;
+  color:#bbbfc7;
+  font-size:12px;
 }
+
 .dot{
-  display:inline-block;width:9px;height:9px;border-radius:50%;background:var(--red);
-  margin-right:8px;box-shadow:0 0 10px var(--red)
+  display:inline-block;
+  width:8px;
+  height:8px;
+  margin-right:7px;
+  border-radius:50%;
+  background:#ff5c5c;
+  box-shadow:0 0 9px #ff5c5c;
 }
+
+/* 实时/赛前 */
 
 .tabs{
-  display:grid;grid-template-columns:1fr 1fr;margin:0 20px;padding:6px;
-  background:#101217;border:1px solid var(--line);border-radius:18px
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:5px;
+  margin:0 18px;
+  padding:5px;
+  border:1px solid var(--line);
+  border-radius:17px;
+  background:#101217;
 }
-.tab{padding:13px;border:0;border-radius:14px;background:transparent;color:#90959f;font-weight:800}
-.tab.active{background:linear-gradient(135deg,#ffd665,#e7b43d);color:#111}
 
-.sports{display:flex;overflow-x:auto;gap:9px;padding:14px 20px 5px;scrollbar-width:none}
-.sports::-webkit-scrollbar{display:none}
+.tab{
+  border:0;
+  border-radius:13px;
+  padding:12px;
+  background:transparent;
+  color:#8f949d;
+  font-weight:800;
+}
+
+.tab.active{
+  background:linear-gradient(135deg,#ffd665,#e7b43d);
+  color:#111;
+}
+
+/* 游戏分类 */
+
+.sports{
+  display:flex;
+  gap:8px;
+  overflow-x:auto;
+  padding:13px 18px 5px;
+  scrollbar-width:none;
+}
+
+.sports::-webkit-scrollbar{
+  display:none;
+}
+
 .sport{
-  flex:0 0 auto;padding:10px 16px;border:1px solid #2b2f38;border-radius:22px;
-  background:#111318;color:#aeb2ba
+  flex:0 0 auto;
+  border:1px solid #2b2f38;
+  border-radius:22px;
+  padding:9px 15px;
+  background:#111318;
+  color:#aeb2ba;
 }
-.sport.active{color:#ffd55d;border-color:#876919;background:#1a1811}
 
-.section-head{padding:17px 20px 10px;display:flex;justify-content:space-between;align-items:center}
-.section-title{font-size:19px;font-weight:900}
-.refresh{color:#ffd65e;font-size:13px;cursor:pointer}
-.list{padding:0 20px}
+.sport.active{
+  border-color:#886a19;
+  background:#1a1811;
+  color:#ffd55d;
+}
 
-.match{border:1px solid var(--line);background:var(--card);border-radius:19px;margin-bottom:13px;overflow:hidden}
-.match-head{padding:14px 16px 9px;display:flex;justify-content:space-between;gap:10px}
-.league{color:#bfc4cd;font-size:12px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+/* 标题 */
+
+.section-head{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:17px 18px 10px;
+}
+
+.section-title{
+  font-size:19px;
+  font-weight:900;
+}
+
+.refresh{
+  color:#ffd65e;
+  font-size:12px;
+  cursor:pointer;
+}
+
+.list{
+  padding:0 18px;
+}
+
+/* 比赛卡 */
+
+.match{
+  margin-bottom:14px;
+  overflow:hidden;
+  border:1px solid var(--line);
+  border-radius:20px;
+  background:#111318;
+}
+
+.match-head{
+  display:flex;
+  justify-content:space-between;
+  gap:10px;
+  padding:14px 15px 8px;
+}
+
+.league{
+  overflow:hidden;
+  text-overflow:ellipsis;
+  white-space:nowrap;
+  color:#c0c5cd;
+  font-size:12px;
+}
+
 .live{
-  flex:0 0 auto;background:#3a1d21;color:#ff7373;border-radius:8px;padding:5px 8px;
-  font-size:10px;font-weight:800
+  flex:0 0 auto;
+  border-radius:8px;
+  padding:5px 8px;
+  background:#3a1d21;
+  color:#ff7777;
+  font-size:10px;
+  font-weight:900;
 }
+
 .prematch{
-  flex:0 0 auto;background:#182635;color:#7dbdff;border-radius:8px;padding:5px 8px;
-  font-size:10px;font-weight:800
+  flex:0 0 auto;
+  border-radius:8px;
+  padding:5px 8px;
+  background:#172737;
+  color:#7ebeff;
+  font-size:10px;
+  font-weight:900;
 }
-.teams{padding:7px 16px 12px}
-.team{display:flex;justify-content:space-between;padding:7px 0;font-size:16px;font-weight:800}
-.score{color:#ffd55e}
 
-.market-title{
-  padding:10px 16px;border-top:1px solid #22262e;color:#9197a2;font-size:12px;
-  display:flex;justify-content:space-between;gap:10px
+.teams{
+  padding:8px 15px 13px;
 }
-.odds-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:8px;padding:0 14px 14px}
+
+.team{
+  display:flex;
+  justify-content:space-between;
+  gap:12px;
+  padding:7px 0;
+  font-size:16px;
+  font-weight:900;
+}
+
+.score{
+  color:#ffd45d;
+}
+
+/* 盘口 */
+
+.market-block{
+  border-top:1px solid #242831;
+}
+
+.market-head{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:12px 15px 9px;
+}
+
+.market-name{
+  color:#c5cad3;
+  font-size:13px;
+  font-weight:700;
+}
+
+.market-actions{
+  display:flex;
+  align-items:center;
+  gap:9px;
+}
+
+.market-open{
+  color:#8d939d;
+  font-size:11px;
+}
+
+.help-btn{
+  border:1px solid #66551e;
+  border-radius:9px;
+  padding:5px 8px;
+  background:#211d11;
+  color:#ffd45d;
+  font-size:10px;
+}
+
+.odds-grid{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:8px;
+  padding:0 13px 13px;
+}
+
 .odd{
-  border:1px solid #2c3039;border-radius:12px;background:#181b21;color:#ddd;
-  padding:11px;text-align:left
+  min-height:75px;
+  border:1px solid #30343e;
+  border-radius:14px;
+  padding:11px 12px;
+  background:#181b21;
+  color:white;
+  text-align:left;
 }
-.odd:active{transform:scale(.98)}
-.odd-name{font-size:12px;color:#aeb3bc;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-.odd-price{margin-top:5px;color:#ffd45d;font-weight:900;font-size:16px}
 
-.empty{padding:45px 20px;text-align:center;color:#858a94}
-.loader{padding:45px;text-align:center;color:#c9cbd0}
+.odd:active{
+  transform:scale(.985);
+  border-color:#80651e;
+}
+
+.odd-name{
+  min-height:19px;
+  color:#e3e5e9;
+  font-size:13px;
+  line-height:1.35;
+}
+
+.odd-hint{
+  margin-top:4px;
+  color:#777e89;
+  font-size:10px;
+  line-height:1.35;
+}
+
+.odd-price{
+  margin-top:7px;
+  color:#ffd45d;
+  font-size:18px;
+  font-weight:900;
+}
+
+.no-market{
+  padding:13px 15px;
+  border-top:1px solid #242831;
+  color:#888e97;
+  font-size:12px;
+}
+
+.empty,
+.loader{
+  padding:42px 20px;
+  color:#858a94;
+  text-align:center;
+}
+
+/* 页面 */
+
+.page{
+  display:none;
+}
+
+.page.active{
+  display:block;
+}
+
+/* 投注记录 */
+
+.bet-card{
+  margin-bottom:12px;
+  padding:15px;
+  border:1px solid var(--line);
+  border-radius:17px;
+  background:#111318;
+}
+
+.bet-top{
+  display:flex;
+  justify-content:space-between;
+  gap:10px;
+}
+
+.bet-market{
+  font-weight:900;
+}
+
+.bet-status{
+  color:#f2c75c;
+  font-size:11px;
+}
+
+.bet-match{
+  margin-top:7px;
+  color:#969ca6;
+  font-size:12px;
+}
+
+.bet-selection{
+  margin-top:10px;
+  color:#fff;
+}
+
+.bet-numbers{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:7px;
+  margin-top:13px;
+}
+
+.number{
+  padding:9px;
+  border-radius:10px;
+  background:#191c22;
+  color:#999fa8;
+  font-size:10px;
+}
+
+.number b{
+  display:block;
+  margin-top:3px;
+  color:#f1f1f1;
+  font-size:13px;
+}
+
+/* 我的 */
+
+.profile{
+  margin:10px 18px 20px;
+  padding:19px;
+  border:1px solid var(--line);
+  border-radius:20px;
+  background:#111318;
+}
+
+.profile-row{
+  display:flex;
+  justify-content:space-between;
+  gap:15px;
+  padding:12px 0;
+  border-bottom:1px solid #22262e;
+}
+
+.profile-row:last-child{
+  border-bottom:0;
+}
+
+.profile-label{
+  color:#8e939d;
+}
+
+/* 教程 */
+
+.tutorial-intro{
+  margin:5px 18px 15px;
+  padding:17px;
+  border:1px solid #5a4820;
+  border-radius:18px;
+  background:
+    radial-gradient(circle at top right,rgba(242,199,92,.12),transparent 45%),
+    #121318;
+}
+
+.tutorial-intro-title{
+  color:#ffd45d;
+  font-size:17px;
+  font-weight:900;
+}
+
+.tutorial-intro-text{
+  margin-top:8px;
+  color:#a8adb6;
+  font-size:12px;
+  line-height:1.7;
+}
+
+.tutorial-list{
+  padding:0 18px;
+}
+
+.tutorial-card{
+  margin-bottom:11px;
+  overflow:hidden;
+  border:1px solid var(--line);
+  border-radius:17px;
+  background:#111318;
+}
+
+.tutorial-title{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:15px;
+  font-weight:900;
+  cursor:pointer;
+}
+
+.tutorial-title span:last-child{
+  color:#ffd45d;
+}
+
+.tutorial-body{
+  display:none;
+  padding:0 15px 16px;
+  color:#aeb3bc;
+  font-size:13px;
+  line-height:1.75;
+}
+
+.tutorial-card.open .tutorial-body{
+  display:block;
+}
+
+.example{
+  margin-top:10px;
+  padding:12px;
+  border-left:3px solid #e6b43c;
+  border-radius:9px;
+  background:#191b20;
+  color:#e1e3e7;
+}
+
+.warning{
+  margin-top:10px;
+  color:#f3c767;
+  font-size:11px;
+}
+
+/* 底栏 */
 
 .bottom{
-  position:fixed;left:0;right:0;bottom:0;z-index:20;
-  background:rgba(9,10,13,.97);border-top:1px solid #22262d
+  position:fixed;
+  right:0;
+  bottom:0;
+  left:0;
+  z-index:30;
+  border-top:1px solid #22262d;
+  background:rgba(8,9,12,.98);
 }
-.bottom-inner{max-width:620px;margin:auto;display:grid;grid-template-columns:repeat(4,1fr)}
-.nav{text-align:center;padding:12px 5px 10px;color:#777d87;cursor:pointer;font-size:11px}
-.nav-icon{font-size:21px;margin-bottom:4px}
-.nav.active{color:#f3c750}
-.page{display:none}
-.page.active{display:block}
 
-.profile{margin:20px;background:#111318;border:1px solid var(--line);border-radius:20px;padding:20px}
-.profile-row{display:flex;justify-content:space-between;padding:12px 0;border-bottom:1px solid #22262e;gap:20px}
-.profile-row:last-child{border-bottom:0}
-.profile-label{color:#8e939d}
+.bottom-inner{
+  display:grid;
+  grid-template-columns:repeat(5,1fr);
+  max-width:620px;
+  margin:auto;
+}
 
-.bet-card{background:#111318;border:1px solid var(--line);border-radius:17px;padding:16px;margin-bottom:12px}
-.bet-top{display:flex;justify-content:space-between;gap:10px}
-.bet-market{font-weight:800}
-.bet-status{font-size:11px;color:#f2c75c}
-.bet-match{margin-top:8px;color:#989da6;font-size:12px}
-.bet-selection{margin-top:11px;color:white}
-.bet-numbers{margin-top:13px;display:grid;grid-template-columns:repeat(3,1fr);gap:7px}
-.number{background:#191c22;padding:9px;border-radius:10px;font-size:11px;color:#999fa8}
-.number b{display:block;color:#f1f1f1;margin-top:3px;font-size:13px}
+.nav{
+  padding:10px 2px 9px;
+  color:#737983;
+  text-align:center;
+  font-size:10px;
+  cursor:pointer;
+}
+
+.nav-icon{
+  margin-bottom:3px;
+  font-size:19px;
+}
+
+.nav.active{
+  color:#f3c750;
+}
+
+/* 弹窗 */
 
 .modal{
-  display:none;position:fixed;inset:0;z-index:50;background:rgba(0,0,0,.7);
-  align-items:flex-end;justify-content:center
+  display:none;
+  position:fixed;
+  inset:0;
+  z-index:80;
+  align-items:flex-end;
+  justify-content:center;
+  background:rgba(0,0,0,.72);
 }
-.modal.show{display:flex}
-.sheet{
-  width:100%;max-width:620px;background:#121419;border-radius:25px 25px 0 0;
-  border-top:1px solid #3a3e47;padding:22px 20px 28px
-}
-.sheet-title{font-size:19px;font-weight:900}
-.sheet-match{margin-top:10px;color:#9fa4ad;font-size:13px}
-.selected{margin-top:15px;background:#1b1e24;border:1px solid #30343d;border-radius:15px;padding:14px}
-.selected-name{color:#ddd}
-.selected-odds{color:#ffd45d;font-weight:900;margin-top:6px}
-.amount-label{margin-top:18px;color:#a3a7af;font-size:13px}
-.amount{
-  width:100%;margin-top:8px;border:1px solid #363a44;background:#0c0d10;color:white;
-  border-radius:13px;padding:14px;font-size:18px;outline:none
-}
-.quick{display:flex;gap:7px;margin-top:9px}
-.quick button{
-  flex:1;padding:8px;border-radius:9px;border:1px solid #30343d;background:#1a1d23;color:#bbbfc7
-}
-.return-box{display:flex;justify-content:space-between;margin-top:15px;color:#aaaeb7}
-.return-value{color:#ffd45d;font-weight:900}
-.sheet-actions{display:grid;grid-template-columns:1fr 2fr;gap:10px;margin-top:20px}
 
-.errorbox{
-  display:none;margin:15px 20px;padding:13px;border:1px solid #5c282d;
-  background:#2b171a;color:#ff9696;border-radius:12px;font-size:12px
+.modal.show{
+  display:flex;
 }
+
+.sheet{
+  width:100%;
+  max-width:620px;
+  max-height:88vh;
+  overflow-y:auto;
+  padding:21px 19px 27px;
+  border-top:1px solid #3a3e47;
+  border-radius:25px 25px 0 0;
+  background:#121419;
+}
+
+.sheet-title{
+  font-size:19px;
+  font-weight:900;
+}
+
+.sheet-match{
+  margin-top:9px;
+  color:#9fa4ad;
+  font-size:12px;
+}
+
+.selected{
+  margin-top:14px;
+  padding:14px;
+  border:1px solid #30343d;
+  border-radius:14px;
+  background:#1b1e24;
+}
+
+.selected-name{
+  color:#ddd;
+}
+
+.selected-odds{
+  margin-top:6px;
+  color:#ffd45d;
+  font-weight:900;
+}
+
+.amount-label{
+  margin-top:17px;
+  color:#a3a7af;
+  font-size:12px;
+}
+
+.amount{
+  width:100%;
+  margin-top:8px;
+  padding:14px;
+  outline:none;
+  border:1px solid #363a44;
+  border-radius:13px;
+  background:#0c0d10;
+  color:white;
+  font-size:18px;
+}
+
+.quick{
+  display:flex;
+  gap:7px;
+  margin-top:8px;
+}
+
+.quick button{
+  flex:1;
+  padding:8px;
+  border:1px solid #30343d;
+  border-radius:9px;
+  background:#1a1d23;
+  color:#bbbfc7;
+}
+
+.return-box{
+  display:flex;
+  justify-content:space-between;
+  margin-top:14px;
+  color:#aaaeb7;
+}
+
+.return-value{
+  color:#ffd45d;
+  font-weight:900;
+}
+
+.sheet-actions{
+  display:grid;
+  grid-template-columns:1fr 2fr;
+  gap:9px;
+  margin-top:19px;
+}
+
+.help-content{
+  margin-top:14px;
+  color:#b5bac3;
+  font-size:13px;
+  line-height:1.75;
+}
+
+.help-example{
+  margin-top:13px;
+  padding:13px;
+  border:1px solid #343842;
+  border-radius:13px;
+  background:#191b21;
+  color:#e4e6ea;
+}
+
+/* 提示 */
+
 .toast{
-  position:fixed;top:20px;left:50%;transform:translateX(-50%) translateY(-100px);
-  background:#252932;color:white;padding:12px 18px;border-radius:12px;z-index:100;
-  transition:.25s;max-width:85%;text-align:center
+  position:fixed;
+  top:20px;
+  left:50%;
+  z-index:100;
+  max-width:85%;
+  padding:12px 18px;
+  border-radius:12px;
+  background:#252932;
+  color:white;
+  text-align:center;
+  transform:translateX(-50%) translateY(-100px);
+  transition:.25s;
 }
-.toast.show{transform:translateX(-50%) translateY(0)}
+
+.toast.show{
+  transform:translateX(-50%) translateY(0);
+}
 
 .auth-loading{
-  position:fixed;inset:0;background:#08090c;z-index:200;display:flex;
-  align-items:center;justify-content:center;flex-direction:column
+  position:fixed;
+  inset:0;
+  z-index:200;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  background:#08090c;
 }
-.auth-logo{
-  width:70px;height:70px;border-radius:22px;background:linear-gradient(135deg,#ffd966,#d59e20);
-  color:#111;display:flex;align-items:center;justify-content:center;font-size:37px
-}
-.auth-title{margin-top:17px;font-weight:900;font-size:21px}
-.auth-text{color:#888e98;margin-top:7px;font-size:12px}
 
-@media(max-width:380px){
-  .brand-title{font-size:20px}
-  .logo{width:47px;height:47px}
-  .username{max-width:80px}
+.auth-logo{
+  display:flex;
+  width:70px;
+  height:70px;
+  align-items:center;
+  justify-content:center;
+  border-radius:22px;
+  background:linear-gradient(135deg,#ffd966,#d59e20);
+  color:#111;
+  font-size:37px;
+}
+
+.auth-title{
+  margin-top:17px;
+  font-size:21px;
+  font-weight:900;
+}
+
+.auth-text{
+  margin-top:7px;
+  color:#888e98;
+  font-size:12px;
+}
+
+.version{
+  margin-top:15px;
+  color:#555b64;
+  font-size:10px;
 }
 </style>
 </head>
@@ -210,6 +854,7 @@ button{cursor:pointer}
   <div class="auth-logo">ϟ</div>
   <div class="auth-title">姜天电竞</div>
   <div class="auth-text">正在验证 Telegram 账户...</div>
+  <div class="version">版本 2.0 中文新手版</div>
 </div>
 
 <div id="toast" class="toast"></div>
@@ -220,6 +865,7 @@ button{cursor:pointer}
   <div class="brandrow">
     <div class="brand">
       <div class="logo">ϟ</div>
+
       <div>
         <div class="brand-title">姜天电竞</div>
         <div class="brand-sub">JIANGTIAN ESPORTS</div>
@@ -233,22 +879,32 @@ button{cursor:pointer}
   </div>
 </header>
 
-<div id="errorBox" class="errorbox"></div>
+
+<!-- 首页 -->
 
 <section id="page-home" class="page active">
 
   <div class="balance-card">
+
     <div class="small">
       我的余额
       <span class="demo">模拟</span>
     </div>
 
-    <div id="balance" class="balance">-- USDT</div>
+    <div id="balance" class="balance">
+      -- USDT
+    </div>
 
     <div class="balance-actions">
-      <button class="btn btn-gold" onclick="demoRecharge()">＋ 模拟充值</button>
-      <button class="btn btn-dark" onclick="showPage('bets')">我的投注</button>
+      <button class="btn btn-gold" onclick="demoRecharge()">
+        ＋ 模拟充值
+      </button>
+
+      <button class="btn btn-dark" onclick="showPage('bets')">
+        我的投注
+      </button>
     </div>
+
   </div>
 
   <div class="statusbar">
@@ -257,8 +913,13 @@ button{cursor:pointer}
   </div>
 
   <div class="tabs">
-    <button id="tabLive" class="tab active" onclick="switchEventType('live')">🔴 实时赛事</button>
-    <button id="tabPrematch" class="tab" onclick="switchEventType('prematch')">🕘 赛前赛事</button>
+    <button id="tabLive" class="tab active" onclick="switchEventType('live')">
+      🔴 实时赛事
+    </button>
+
+    <button id="tabPrematch" class="tab" onclick="switchEventType('prematch')">
+      🕘 赛前赛事
+    </button>
   </div>
 
   <div id="sports" class="sports">
@@ -266,8 +927,13 @@ button{cursor:pointer}
   </div>
 
   <div class="section-head">
-    <div id="sectionTitle" class="section-title">🔥 实时赛事</div>
-    <div class="refresh" onclick="loadFixtures()">↻ 刷新</div>
+    <div id="sectionTitle" class="section-title">
+      🔥 实时赛事
+    </div>
+
+    <div class="refresh" onclick="loadFixtures()">
+      ↻ 刷新
+    </div>
   </div>
 
   <div id="matchList" class="list">
@@ -276,33 +942,259 @@ button{cursor:pointer}
 
 </section>
 
+
+<!-- 投注单 -->
+
 <section id="page-slip" class="page">
+
   <div class="section-head">
-    <div class="section-title">🎫 投注单</div>
+    <div class="section-title">
+      🎫 投注单
+    </div>
   </div>
 
   <div id="slipContent" class="list">
-    <div class="empty">暂无选择<br><br>请在赛事赔率中选择一个盘口</div>
+    <div class="empty">
+      暂无选择
+      <br><br>
+      请在赛事赔率中选择一个盘口
+    </div>
   </div>
+
 </section>
 
+
+<!-- 我的投注 -->
+
 <section id="page-bets" class="page">
+
   <div class="section-head">
-    <div class="section-title">📋 我的投注</div>
-    <div class="refresh" onclick="loadBets()">↻ 刷新</div>
+    <div class="section-title">
+      📋 我的投注
+    </div>
+
+    <div class="refresh" onclick="loadBets()">
+      ↻ 刷新
+    </div>
   </div>
 
   <div id="betsList" class="list">
-    <div class="loader">正在读取...</div>
+    <div class="loader">
+      正在读取投注记录...
+    </div>
   </div>
+
 </section>
 
-<section id="page-profile" class="page">
+
+<!-- 教程 -->
+
+<section id="page-tutorial" class="page">
+
   <div class="section-head">
-    <div class="section-title">👤 我的</div>
+    <div class="section-title">
+      📖 新手教程
+    </div>
+  </div>
+
+  <div class="tutorial-intro">
+    <div class="tutorial-intro-title">
+      第一次看盘口？
+    </div>
+
+    <div class="tutorial-intro-text">
+      这里用简单例子介绍常见电竞盘口。
+      实际结算规则可能因赛事和具体盘口不同，
+      下单前请同时查看当前盘口名称和选项。
+    </div>
+  </div>
+
+  <div class="tutorial-list">
+
+    <div class="tutorial-card open">
+      <div class="tutorial-title" onclick="toggleTutorial(this)">
+        <span>🏆 什么是比赛胜负？</span>
+        <span>＋</span>
+      </div>
+
+      <div class="tutorial-body">
+        这是最容易理解的玩法：选择你认为最终会获胜的一方。
+
+        <div class="example">
+          Team Vitality　赔率 1.65
+          <br>
+          Team Falcons　赔率 2.15
+          <br><br>
+          如果选择 Team Vitality，
+          就代表你预测 Team Vitality 赢得该盘口对应的比赛。
+        </div>
+      </div>
+    </div>
+
+
+    <div class="tutorial-card">
+      <div class="tutorial-title" onclick="toggleTutorial(this)">
+        <span>⚖️ 什么是让分 / 让盘？</span>
+        <span>＋</span>
+      </div>
+
+      <div class="tutorial-body">
+
+        让分是在实际赛果基础上加入一个虚拟分差后进行判断。
+
+        <div class="example">
+          Team Vitality　-1.5
+          <br>
+          Team Falcons　+1.5
+          <br><br>
+
+          <b>-1.5</b> 通常表示该方让出 1.5。
+          <br>
+          <b>+1.5</b> 通常表示该方获得 1.5 的优势。
+        </div>
+
+        <div class="warning">
+          注意：具体“分”代表地图、回合、击杀还是其他统计，
+          必须以当前盘口名称为准，不能只看 -1.5。
+        </div>
+
+      </div>
+    </div>
+
+
+    <div class="tutorial-card">
+      <div class="tutorial-title" onclick="toggleTutorial(this)">
+        <span>📊 什么是大 / 小？</span>
+        <span>＋</span>
+      </div>
+
+      <div class="tutorial-body">
+
+        大小盘是预测最终统计值高于还是低于盘口数字。
+
+        <div class="example">
+          <b>大 2.5</b>：最终统计值必须超过 2.5。
+          <br><br>
+          <b>小 2.5</b>：最终统计值必须低于 2.5。
+        </div>
+
+        如果盘口明确写的是“总地图数 2.5”，
+        那么大 2.5 通常代表至少出现 3 张地图，
+        小 2.5 通常代表最多出现 2 张地图。
+
+      </div>
+    </div>
+
+
+    <div class="tutorial-card">
+      <div class="tutorial-title" onclick="toggleTutorial(this)">
+        <span>🗺️ 什么是地图胜负？</span>
+        <span>＋</span>
+      </div>
+
+      <div class="tutorial-body">
+
+        地图胜负只判断指定地图，而不是整场比赛。
+
+        <div class="example">
+          第2地图胜负
+          <br><br>
+          Team A　1.70
+          <br>
+          Team B　2.05
+          <br><br>
+          选择 Team A，代表预测 Team A 赢下第2张地图。
+        </div>
+
+      </div>
+    </div>
+
+
+    <div class="tutorial-card">
+      <div class="tutorial-title" onclick="toggleTutorial(this)">
+        <span>🎯 什么是击杀数？</span>
+        <span>＋</span>
+      </div>
+
+      <div class="tutorial-body">
+
+        预测比赛、地图或指定阶段产生的击杀数量。
+
+        <div class="example">
+          第1地图总击杀数 45.5
+          <br><br>
+          大 45.5：最终至少 46 个击杀。
+          <br>
+          小 45.5：最终最多 45 个击杀。
+        </div>
+
+      </div>
+    </div>
+
+
+    <div class="tutorial-card">
+      <div class="tutorial-title" onclick="toggleTutorial(this)">
+        <span>🔫 什么是回合数？</span>
+        <span>＋</span>
+      </div>
+
+      <div class="tutorial-body">
+
+        CS2、彩虹六号等游戏经常出现回合数盘口。
+
+        <div class="example">
+          总回合数 21.5
+          <br><br>
+          大 21.5：最终至少 22 个回合。
+          <br>
+          小 21.5：最终最多 21 个回合。
+        </div>
+
+      </div>
+    </div>
+
+
+    <div class="tutorial-card">
+      <div class="tutorial-title" onclick="toggleTutorial(this)">
+        <span>💥 什么是特殊事件盘口？</span>
+        <span>＋</span>
+      </div>
+
+      <div class="tutorial-body">
+
+        这类盘口预测比赛中某个具体事件是否发生。
+
+        <div class="example">
+          第2地图是否会出现高爆手雷击杀？
+          <br><br>
+          是　1.45
+          <br>
+          否　2.60
+        </div>
+
+        其他还可能包括一血、一塔、手枪局、炸弹安装、
+        特定击杀方式等。
+
+      </div>
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- 我的 -->
+
+<section id="page-profile" class="page">
+
+  <div class="section-head">
+    <div class="section-title">
+      👤 我的
+    </div>
   </div>
 
   <div class="profile">
+
     <div class="profile-row">
       <span class="profile-label">Telegram ID</span>
       <span id="profileId">--</span>
@@ -320,36 +1212,67 @@ button{cursor:pointer}
 
     <div class="profile-row">
       <span class="profile-label">账户状态</span>
-      <span style="color:#2ecc71">● 独立账户</span>
+      <span style="color:#2ecc71">
+        ● 独立账户
+      </span>
     </div>
+
+    <div class="profile-row">
+      <span class="profile-label">当前版本</span>
+      <span>2.0 中文新手版</span>
+    </div>
+
   </div>
+
 </section>
 
 </div>
 
+
+<!-- 底部导航 -->
+
 <div class="bottom">
   <div class="bottom-inner">
+
     <div id="nav-home" class="nav active" onclick="showPage('home')">
-      <div class="nav-icon">⌂</div>首页
+      <div class="nav-icon">⌂</div>
+      首页
     </div>
 
     <div id="nav-slip" class="nav" onclick="showPage('slip')">
-      <div class="nav-icon">🎫</div>投注单
+      <div class="nav-icon">🎫</div>
+      投注单
     </div>
 
     <div id="nav-bets" class="nav" onclick="showPage('bets')">
-      <div class="nav-icon">📋</div>我的投注
+      <div class="nav-icon">📋</div>
+      我的投注
+    </div>
+
+    <div id="nav-tutorial" class="nav" onclick="showPage('tutorial')">
+      <div class="nav-icon">📖</div>
+      教程
     </div>
 
     <div id="nav-profile" class="nav" onclick="showPage('profile')">
-      <div class="nav-icon">👤</div>我的
+      <div class="nav-icon">👤</div>
+      我的
     </div>
+
   </div>
 </div>
 
+
+<!-- 投注弹窗 -->
+
 <div id="betModal" class="modal">
+
   <div class="sheet">
-    <div class="sheet-title">确认模拟投注</div>
+
+    <div class="sheet-title">
+      确认模拟投注
+    </div>
+
     <div id="modalMatch" class="sheet-match"></div>
 
     <div class="selected">
@@ -357,7 +1280,9 @@ button{cursor:pointer}
       <div id="modalOdds" class="selected-odds"></div>
     </div>
 
-    <div class="amount-label">投注金额（USDT）</div>
+    <div class="amount-label">
+      投注金额（USDT）
+    </div>
 
     <input
       id="stakeInput"
@@ -377,17 +1302,56 @@ button{cursor:pointer}
 
     <div class="return-box">
       <span>预计返还</span>
-      <span id="returnValue" class="return-value">0.00 USDT</span>
+      <span id="returnValue" class="return-value">
+        0.00 USDT
+      </span>
     </div>
 
     <div class="sheet-actions">
-      <button class="btn btn-dark" onclick="closeBetModal()">取消</button>
-      <button id="submitBetBtn" class="btn btn-gold" onclick="submitBet()">确认模拟投注</button>
+      <button class="btn btn-dark" onclick="closeBetModal()">
+        取消
+      </button>
+
+      <button id="submitBetBtn" class="btn btn-gold" onclick="submitBet()">
+        确认模拟投注
+      </button>
     </div>
+
   </div>
+
 </div>
 
+
+<!-- 玩法说明弹窗 -->
+
+<div id="helpModal" class="modal">
+
+  <div class="sheet">
+
+    <div id="helpTitle" class="sheet-title">
+      玩法说明
+    </div>
+
+    <div id="helpContent" class="help-content"></div>
+
+    <div class="sheet-actions" style="grid-template-columns:1fr">
+      <button class="btn btn-gold" onclick="closeHelp()">
+        我知道了
+      </button>
+    </div>
+
+  </div>
+
+</div>
+
+
 <script>
+
+/*
+  前端版本
+  每次大更新修改这个数字。
+*/
+const APP_VERSION = "2.0.20261006";
 
 const API_BASE =
   "https://telegram-bot-production-1a67.up.railway.app";
@@ -403,94 +1367,154 @@ let filteredFixtures = [];
 
 let currentType = "live";
 let currentSport = "全部";
+
 let selectedBet = null;
 
 
-/* =========================================================
-   中文翻译
-========================================================= */
+/* =====================================================
+   基础工具
+===================================================== */
 
-function normalizeText(value){
+function text(value){
   return String(value ?? "").trim();
 }
 
-function lowerText(value){
-  return normalizeText(value).toLowerCase();
+function lower(value){
+  return text(value).toLowerCase();
+}
+
+function escapeHtml(value){
+
+  return String(value ?? "")
+    .replaceAll("&","&amp;")
+    .replaceAll("<","&lt;")
+    .replaceAll(">","&gt;")
+    .replaceAll('"',"&quot;")
+    .replaceAll("'","&#039;");
+}
+
+function formatLine(value){
+
+  if(
+    value === null ||
+    value === undefined ||
+    value === ""
+  ){
+    return "";
+  }
+
+  const n = Number(value);
+
+  if(Number.isNaN(n)){
+    return String(value);
+  }
+
+  if(n > 0){
+    return "+" + n;
+  }
+
+  return String(n);
 }
 
 
-/* 游戏名称：电竞项目正式缩写保留 */
+/* =====================================================
+   游戏名称翻译
+===================================================== */
+
 function translateSport(value){
 
-  const raw = normalizeText(value);
+  const raw = text(value);
   const s = raw.toLowerCase();
 
   const map = {
+
     "league of legends":"LOL",
     "lol":"LOL",
+
     "counter-strike 2":"CS2",
     "counter strike 2":"CS2",
     "cs2":"CS2",
-    "counter-strike":"CS",
     "csgo":"CS",
+
     "dota 2":"DOTA2",
     "dota2":"DOTA2",
+
     "valorant":"无畏契约",
+
     "rainbow six":"彩虹六号",
     "rainbow six siege":"彩虹六号",
     "rainbow six: siege":"彩虹六号",
     "r6":"彩虹六号",
+
     "overwatch":"守望先锋",
     "overwatch 2":"守望先锋2",
+
     "starcraft 2":"星际争霸2",
     "starcraft ii":"星际争霸2",
-    "call of duty":"使命召唤"
+
+    "call of duty":"使命召唤",
+
+    "ebasketball":"电竞篮球",
+    "e-basketball":"电竞篮球",
+
+    "efootball":"电竞足球",
+    "e-football":"电竞足球",
+
+    "basketball":"篮球",
+    "football":"足球",
+    "soccer":"足球"
   };
 
   return map[s] || raw;
 }
 
 
-/* 盘口名称中文化 */
+/* =====================================================
+   盘口翻译
+===================================================== */
+
 function translateMarket(value){
 
-  const raw = normalizeText(value);
+  const raw = text(value);
 
-  if(!raw) return "比赛盘口";
+  if(!raw){
+    return "比赛盘口";
+  }
 
-  const s = raw
-    .toLowerCase()
-    .replaceAll("_"," ")
-    .replaceAll("-"," ")
-    .replace(/\s+/g," ")
-    .trim();
+  const s =
+    raw
+      .toLowerCase()
+      .replaceAll("_"," ")
+      .replace(/\s+/g," ")
+      .trim();
 
   const exact = {
+
     "match winner":"比赛胜负",
     "match winner twoway":"比赛胜负",
     "match winner two way":"比赛胜负",
     "moneyline":"比赛胜负",
     "money line":"比赛胜负",
 
-    "map winner":"地图胜负",
-    "map 1 winner":"第1地图胜负",
-    "map 2 winner":"第2地图胜负",
-    "map 3 winner":"第3地图胜负",
-    "map 4 winner":"第4地图胜负",
-    "map 5 winner":"第5地图胜负",
-
     "match handicap":"比赛让分",
+    "handicap":"比赛让分",
+    "match spread":"比赛让分",
+
     "map handicap":"地图让分",
     "maps handicap":"地图让分",
 
-    "total maps":"总地图数",
-    "total rounds":"总回合数",
-    "total kills":"总击杀数",
-    "total games":"总局数",
+    "map winner":"地图胜负",
 
-    "first map winner":"第1地图胜负",
-    "second map winner":"第2地图胜负",
-    "third map winner":"第3地图胜负",
+    "total maps":"总地图数",
+    "maps total":"总地图数",
+
+    "total rounds":"总回合数",
+    "rounds total":"总回合数",
+
+    "total kills":"总击杀数",
+    "kills total":"总击杀数",
+
+    "total games":"总局数",
 
     "correct score":"正确比分",
     "match score":"比赛比分",
@@ -501,42 +1525,133 @@ function translateMarket(value){
     "first baron":"第一条大龙",
     "first inhibitor":"第一座高地",
 
-    "race to 5 kills":"率先达到5击杀",
-    "race to 10 kills":"率先达到10击杀",
-    "race to 15 kills":"率先达到15击杀",
-    "race to 20 kills":"率先达到20击杀"
+    "both teams to score":"双方是否得分",
+
+    "odd even":"单双",
+    "odd/even":"单双"
   };
 
   if(exact[s]){
     return exact[s];
   }
 
-  let mapNumber = s.match(/map\s*(\d+)/);
 
-  if(mapNumber){
+  /* Map X */
 
-    const n = mapNumber[1];
+  let m =
+    s.match(/map\s*(\d+)/);
+
+  if(m){
+
+    const n = m[1];
 
     if(s.includes("winner")){
       return `第${n}地图胜负`;
     }
 
-    if(s.includes("handicap")){
+    if(
+      s.includes("handicap") ||
+      s.includes("spread")
+    ){
       return `第${n}地图让分`;
+    }
+
+    if(
+      s.includes("total") &&
+      s.includes("kill")
+    ){
+      return `第${n}地图总击杀数`;
+    }
+
+    if(
+      s.includes("total") &&
+      s.includes("round")
+    ){
+      return `第${n}地图总回合数`;
     }
 
     if(s.includes("total")){
       return `第${n}地图大小`;
     }
 
-    if(s.includes("kills")){
-      return `第${n}地图击杀数`;
-    }
-
-    if(s.includes("rounds")){
-      return `第${n}地图回合数`;
+    if(
+      s.includes("first blood")
+    ){
+      return `第${n}地图一血`;
     }
   }
+
+
+  /* 特殊 CS 手雷 */
+
+  if(
+    s.includes("high explosive grenade") &&
+    s.includes("kill")
+  ){
+
+    const map =
+      s.match(/map\s*(\d+)/);
+
+    return map
+      ? `第${map[1]}地图是否会出现高爆手雷击杀？`
+      : "是否会出现高爆手雷击杀？";
+  }
+
+
+  if(
+    s.includes("grenade") &&
+    s.includes("kill")
+  ){
+
+    const map =
+      s.match(/map\s*(\d+)/);
+
+    return map
+      ? `第${map[1]}地图是否会出现手雷击杀？`
+      : "是否会出现手雷击杀？";
+  }
+
+
+  if(
+    s.includes("knife") &&
+    s.includes("kill")
+  ){
+
+    return "是否会出现刀杀？";
+  }
+
+
+  if(
+    s.includes("bomb") &&
+    s.includes("plant")
+  ){
+
+    return "是否会成功安装炸弹？";
+  }
+
+
+  if(
+    s.includes("pistol") &&
+    s.includes("winner")
+  ){
+
+    return "手枪局胜负";
+  }
+
+
+  if(
+    s.includes("race to") &&
+    s.includes("kill")
+  ){
+
+    const number =
+      s.match(/race to\s*(\d+)/);
+
+    if(number){
+      return `率先达到${number[1]}击杀`;
+    }
+  }
+
 
   if(
     s.includes("handicap") ||
@@ -545,19 +1660,6 @@ function translateMarket(value){
     return "让分盘口";
   }
 
-  if(
-    s.includes("total") &&
-    s.includes("kill")
-  ){
-    return "总击杀数";
-  }
-
-  if(
-    s.includes("total") &&
-    s.includes("round")
-  ){
-    return "总回合数";
-  }
 
   if(
     s.includes("total") &&
@@ -566,39 +1668,51 @@ function translateMarket(value){
     return "总地图数";
   }
 
+
+  if(
+    s.includes("total") &&
+    s.includes("round")
+  ){
+    return "总回合数";
+  }
+
+
+  if(
+    s.includes("total") &&
+    s.includes("kill")
+  ){
+    return "总击杀数";
+  }
+
+
   if(s.includes("winner")){
     return "胜负";
   }
 
-  if(s.includes("kills")){
-    return "击杀数";
-  }
 
-  if(s.includes("rounds")){
-    return "回合数";
-  }
-
-  if(s.includes("maps")){
-    return "地图数";
-  }
-
-  /* 无法识别时保留原始盘口，避免翻错 */
   return raw;
 }
 
 
-/* 投注选项中文化 */
+/* =====================================================
+   选项翻译
+===================================================== */
+
 function translateSelection(value){
 
-  const raw = normalizeText(value);
+  const raw = text(value);
 
-  if(!raw) return "选项";
+  if(!raw){
+    return "选项";
+  }
 
-  const s = raw.toLowerCase().trim();
+  const s = raw.toLowerCase();
 
   const exact = {
+
     "home":"主队",
     "away":"客队",
+
     "draw":"平局",
     "tie":"平局",
 
@@ -608,101 +1722,538 @@ function translateSelection(value){
     "over":"大",
     "under":"小",
 
-    "odd":"单数",
-    "even":"双数",
+    "odd":"单",
+    "even":"双",
 
     "team 1":"队伍1",
     "team 2":"队伍2",
+
     "player 1":"选手1",
-    "player 2":"选手2",
-
-    "1":"主队",
-    "2":"客队",
-
-    "win":"获胜",
-    "lose":"落败"
+    "player 2":"选手2"
   };
 
   if(exact[s]){
     return exact[s];
   }
 
-  /* Over 2.5 */
-  let match = raw.match(/^over\s+(.+)$/i);
 
-  if(match){
-    return "大 " + match[1];
+  let m =
+    raw.match(/^over\s+(.+)$/i);
+
+  if(m){
+    return "大 " + m[1];
   }
 
-  /* Under 2.5 */
-  match = raw.match(/^under\s+(.+)$/i);
 
-  if(match){
-    return "小 " + match[1];
+  m =
+    raw.match(/^under\s+(.+)$/i);
+
+  if(m){
+    return "小 " + m[1];
   }
 
-  /* Home +1.5 */
-  match = raw.match(/^home\s+(.+)$/i);
 
-  if(match){
-    return "主队 " + match[1];
+  m =
+    raw.match(/^home\s+(.+)$/i);
+
+  if(m){
+    return "主队 " + m[1];
   }
 
-  /* Away -1.5 */
-  match = raw.match(/^away\s+(.+)$/i);
 
-  if(match){
-    return "客队 " + match[1];
+  m =
+    raw.match(/^away\s+(.+)$/i);
+
+  if(m){
+    return "客队 " + m[1];
   }
 
-  /* Team 1 +1.5 */
-  match = raw.match(/^team\s*1\s+(.+)$/i);
-
-  if(match){
-    return "队伍1 " + match[1];
-  }
-
-  match = raw.match(/^team\s*2\s+(.+)$/i);
-
-  if(match){
-    return "队伍2 " + match[1];
-  }
 
   /*
-    如果 selection 本身就是战队名称，
-    不翻译，保持官方队名。
+    战队名称不翻译。
   */
   return raw;
 }
 
 
-/* 投注状态 */
-function translateBetStatus(value){
+/* =====================================================
+   根据盘口判断类型
+===================================================== */
 
-  const s = lowerText(value);
+function getMarketType(market){
 
-  const map = {
-    "pending":"待结算",
-    "open":"待结算",
-    "active":"进行中",
-    "won":"已赢",
-    "win":"已赢",
-    "lost":"已输",
-    "lose":"已输",
-    "void":"已取消",
-    "cancelled":"已取消",
-    "canceled":"已取消",
-    "refunded":"已退款",
-    "settled":"已结算"
-  };
+  const raw =
+    lower(
+      market?.canonical ||
+      market?.market
+    );
 
-  return map[s] || value || "待结算";
+  if(
+    raw.includes("handicap") ||
+    raw.includes("spread")
+  ){
+    return "handicap";
+  }
+
+  if(
+    raw.includes("total") ||
+    raw.includes("over under")
+  ){
+    return "total";
+  }
+
+  if(
+    raw.includes("winner") ||
+    raw.includes("moneyline")
+  ){
+    return "winner";
+  }
+
+  if(
+    raw.includes("grenade") ||
+    raw.includes("first blood") ||
+    raw.includes("pistol") ||
+    raw.includes("bomb") ||
+    raw.includes("knife")
+  ){
+    return "special";
+  }
+
+  return "other";
 }
 
 
-/* =========================================================
+/* =====================================================
+   选项智能显示
+===================================================== */
+
+function buildSelectionDisplay(
+  selection,
+  market,
+  event
+){
+
+  const teams =
+    getTeams(event);
+
+  const rawName =
+    text(
+      selection?.name ||
+      selection?.side
+    );
+
+  const side =
+    lower(selection?.side);
+
+  const line =
+    selection?.line;
+
+  const marketType =
+    getMarketType(market);
+
+
+  /*
+    让分
+  */
+
+  if(marketType === "handicap"){
+
+    let teamName = "";
+
+    if(
+      side === "home" ||
+      side === "1" ||
+      side === "team1" ||
+      side === "team 1"
+    ){
+      teamName =
+        teams.home;
+    }
+
+    else if(
+      side === "away" ||
+      side === "2" ||
+      side === "team2" ||
+      side === "team 2"
+    ){
+      teamName =
+        teams.away;
+    }
+
+    /*
+      如果name本身就是战队名
+    */
+    else if(
+      rawName === teams.home ||
+      rawName === teams.away
+    ){
+      teamName =
+        rawName;
+    }
+
+    /*
+      name里包含战队名
+    */
+    else if(
+      rawName.includes(teams.home)
+    ){
+      teamName =
+        teams.home;
+    }
+
+    else if(
+      rawName.includes(teams.away)
+    ){
+      teamName =
+        teams.away;
+    }
+
+
+    if(teamName && line !== undefined && line !== null){
+
+      return {
+        title:
+          teamName +
+          " " +
+          formatLine(line),
+
+        hint:
+          Number(line) < 0
+            ? "让分方"
+            : Number(line) > 0
+              ? "受让方"
+              : "平手盘口"
+      };
+    }
+
+
+    /*
+      Oddiwire没给方向时绝不猜队伍
+    */
+    if(line !== undefined && line !== null){
+
+      return {
+        title:
+          "让分 " +
+          formatLine(line),
+
+        hint:
+          "接口暂未提供明确队伍方向"
+      };
+    }
+  }
+
+
+  /*
+    大小盘
+  */
+
+  if(marketType === "total"){
+
+    let direction = "";
+
+    if(
+      side === "over" ||
+      lower(rawName).startsWith("over")
+    ){
+      direction = "大";
+    }
+
+    if(
+      side === "under" ||
+      lower(rawName).startsWith("under")
+    ){
+      direction = "小";
+    }
+
+
+    if(direction && line !== undefined && line !== null){
+
+      return {
+        title:
+          direction +
+          " " +
+          line,
+
+        hint:
+          direction === "大"
+            ? "最终统计值高于该数字"
+            : "最终统计值低于该数字"
+      };
+    }
+
+
+    const translated =
+      translateSelection(rawName);
+
+    if(
+      translated === "大" &&
+      line !== undefined &&
+      line !== null
+    ){
+      return {
+        title:"大 " + line,
+        hint:"最终统计值高于该数字"
+      };
+    }
+
+    if(
+      translated === "小" &&
+      line !== undefined &&
+      line !== null
+    ){
+      return {
+        title:"小 " + line,
+        hint:"最终统计值低于该数字"
+      };
+    }
+
+
+    /*
+      只有数字但没有大/小方向时不乱猜
+    */
+    if(
+      line !== undefined &&
+      line !== null
+    ){
+
+      return {
+        title:
+          translated ||
+          String(line),
+
+        hint:
+          "请根据当前盘口方向确认"
+      };
+    }
+  }
+
+
+  /*
+    胜负
+  */
+
+  if(marketType === "winner"){
+
+    if(
+      side === "home" ||
+      side === "1"
+    ){
+      return {
+        title:teams.home,
+        hint:"选择该队获胜"
+      };
+    }
+
+    if(
+      side === "away" ||
+      side === "2"
+    ){
+      return {
+        title:teams.away,
+        hint:"选择该队获胜"
+      };
+    }
+  }
+
+
+  /*
+    普通/特殊盘口
+  */
+
+  let title =
+    translateSelection(rawName);
+
+  if(
+    line !== undefined &&
+    line !== null &&
+    line !== "" &&
+    !title.includes(
+      String(line)
+    )
+  ){
+    title +=
+      " " +
+      formatLine(line);
+  }
+
+
+  return {
+    title:title || "选项",
+    hint:""
+  };
+}
+
+
+/* =====================================================
+   玩法说明
+===================================================== */
+
+function getHelpText(market){
+
+  const name =
+    translateMarket(
+      market?.market ||
+      market?.canonical
+    );
+
+  const type =
+    getMarketType(market);
+
+
+  if(type === "handicap"){
+
+    return {
+      title:
+        "⚖️ " + name,
+
+      body:
+        `让分是在实际赛果基础上加入盘口分差进行判断。
+        <div class="help-example">
+          <b>“-”通常代表让分</b><br>
+          <b>“+”通常代表受让</b><br><br>
+          例如页面显示：<br>
+          Team A -1.5<br>
+          Team B +1.5<br><br>
+          具体 1.5 代表地图、回合、击杀还是其他统计，
+          要以当前盘口名称为准。
+        </div>
+        <div class="warning">
+          系统只有在接口明确提供队伍方向时才会自动标注队伍，
+          不会根据 -1.5 自行猜测是哪一方。
+        </div>`
+    };
+  }
+
+
+  if(type === "total"){
+
+    const lowerName =
+      lower(
+        market?.market ||
+        market?.canonical
+      );
+
+    let example =
+      `大 2.5：最终统计值超过 2.5。<br>
+       小 2.5：最终统计值低于 2.5。`;
+
+    if(
+      lowerName.includes("map")
+    ){
+
+      example =
+        `如果盘口是总地图数 2.5：<br><br>
+         <b>大 2.5</b> = 至少进行 3 张地图。<br>
+         <b>小 2.5</b> = 最多进行 2 张地图。`;
+    }
+
+
+    return {
+      title:
+        "📊 " + name,
+
+      body:
+        `大小盘用于预测最终统计值高于还是低于指定数字。
+        <div class="help-example">
+          ${example}
+        </div>`
+    };
+  }
+
+
+  if(type === "winner"){
+
+    return {
+      title:
+        "🏆 " + name,
+
+      body:
+        `选择你认为会赢得该盘口对应比赛或地图的一方。
+        <div class="help-example">
+          如果盘口是“比赛胜负”，判断整场比赛。<br><br>
+          如果盘口是“第2地图胜负”，则只判断第2张地图。
+        </div>`
+    };
+  }
+
+
+  if(type === "special"){
+
+    return {
+      title:
+        "🎯 " + name,
+
+      body:
+        `这是特殊事件盘口，判断指定事件是否发生。
+        <div class="help-example">
+          例如：<br>
+          “第2地图是否会出现高爆手雷击杀？”<br><br>
+          选择“是”代表预测该事件会发生；<br>
+          选择“否”代表预测该事件不会发生。
+        </div>`
+    };
+  }
+
+
+  return {
+    title:
+      "❓ " + name,
+
+    body:
+      `这是该赛事提供的特殊盘口。
+       请根据盘口名称和具体选项判断投注内容。
+       如果盘口信息不足，系统不会自行猜测结算规则。`
+  };
+}
+
+
+function openHelp(eventIndex,marketIndex){
+
+  const event =
+    filteredFixtures[eventIndex];
+
+  if(!event){
+    return;
+  }
+
+  const market =
+    event.markets?.[marketIndex];
+
+  if(!market){
+    return;
+  }
+
+  const info =
+    getHelpText(market);
+
+  document.getElementById(
+    "helpTitle"
+  ).textContent =
+    info.title;
+
+  document.getElementById(
+    "helpContent"
+  ).innerHTML =
+    info.body;
+
+  document.getElementById(
+    "helpModal"
+  ).classList.add("show");
+}
+
+
+function closeHelp(){
+
+  document.getElementById(
+    "helpModal"
+  ).classList.remove("show");
+}
+
+
+/* =====================================================
    Telegram
-========================================================= */
+===================================================== */
 
 function initTelegram(){
 
@@ -718,7 +2269,8 @@ function initTelegram(){
   tg.ready();
   tg.expand();
 
-  initData = tg.initData || "";
+  initData =
+    tg.initData || "";
 
   if(!initData){
 
@@ -730,7 +2282,8 @@ function initTelegram(){
   }
 
   currentUser =
-    tg.initDataUnsafe?.user || null;
+    tg.initDataUnsafe?.user ||
+    null;
 
   if(currentUser){
     renderTelegramUser(currentUser);
@@ -749,7 +2302,8 @@ function renderTelegramUser(user){
 
   document.getElementById(
     "username"
-  ).textContent = displayName;
+  ).textContent =
+    displayName;
 
   document.getElementById(
     "profileUsername"
@@ -763,14 +2317,14 @@ function renderTelegramUser(user){
   ).textContent =
     user.id || "--";
 
-  const avatarWrap =
+  const avatar =
     document.getElementById(
       "avatarWrap"
     );
 
   if(user.photo_url){
 
-    avatarWrap.outerHTML =
+    avatar.outerHTML =
       `<img
         id="avatarWrap"
         class="avatar"
@@ -780,7 +2334,7 @@ function renderTelegramUser(user){
 
   }else{
 
-    avatarWrap.textContent =
+    avatar.textContent =
       displayName
         .charAt(0)
         .toUpperCase();
@@ -788,9 +2342,9 @@ function renderTelegramUser(user){
 }
 
 
-/* =========================================================
+/* =====================================================
    API
-========================================================= */
+===================================================== */
 
 async function apiFetch(path,options={}){
 
@@ -814,14 +2368,42 @@ async function apiFetch(path,options={}){
       "application/json";
   }
 
+  /*
+    给GET请求增加版本参数，
+    尽量减少WebView使用旧响应。
+  */
+  let finalPath = path;
+
+  if(
+    !options.method ||
+    options.method === "GET"
+  ){
+
+    finalPath +=
+      (
+        finalPath.includes("?")
+          ? "&"
+          : "?"
+      ) +
+      "_v=" +
+      encodeURIComponent(
+        APP_VERSION
+      ) +
+      "&_t=" +
+      Date.now();
+  }
+
+
   const response =
     await fetch(
-      API_BASE + path,
+      API_BASE + finalPath,
       {
         ...options,
-        headers
+        headers,
+        cache:"no-store"
       }
     );
+
 
   let data;
 
@@ -836,6 +2418,7 @@ async function apiFetch(path,options={}){
       "服务器返回格式异常"
     );
   }
+
 
   if(
     !response.ok ||
@@ -852,9 +2435,9 @@ async function apiFetch(path,options={}){
 }
 
 
-/* =========================================================
-   用户账户
-========================================================= */
+/* =====================================================
+   用户
+===================================================== */
 
 async function loadAccount(){
 
@@ -871,13 +2454,15 @@ async function loadAccount(){
         }
       );
 
-    account = data.user;
+    account =
+      data.user;
 
     updateAccountUI();
 
     document.getElementById(
       "authLoading"
-    ).style.display = "none";
+    ).style.display =
+      "none";
 
     await loadFixtures();
 
@@ -893,9 +2478,11 @@ async function loadAccount(){
 
 function updateAccountUI(){
 
-  if(!account) return;
+  if(!account){
+    return;
+  }
 
-  const userBalance =
+  const money =
     Number(
       account.balance || 0
     );
@@ -903,7 +2490,7 @@ function updateAccountUI(){
   document.getElementById(
     "balance"
   ).textContent =
-    userBalance.toLocaleString(
+    money.toLocaleString(
       "en-US",
       {
         minimumFractionDigits:2,
@@ -915,7 +2502,7 @@ function updateAccountUI(){
   document.getElementById(
     "profileBalance"
   ).textContent =
-    userBalance.toFixed(2) +
+    money.toFixed(2) +
     " USDT";
 
   document.getElementById(
@@ -933,7 +2520,8 @@ function updateAccountUI(){
 
   document.getElementById(
     "profileUsername"
-  ).textContent = name;
+  ).textContent =
+    name;
 
   document.getElementById(
     "username"
@@ -941,6 +2529,7 @@ function updateAccountUI(){
     account.first_name ||
     account.username ||
     "玩家";
+
 
   if(account.photo_url){
 
@@ -963,9 +2552,9 @@ function updateAccountUI(){
 }
 
 
-/* =========================================================
-   获取赛事
-========================================================= */
+/* =====================================================
+   赛事
+===================================================== */
 
 async function loadFixtures(){
 
@@ -1017,9 +2606,52 @@ async function loadFixtures(){
 }
 
 
-/* =========================================================
-   游戏分类
-========================================================= */
+function getSportIcon(sport){
+
+  const s =
+    lower(sport);
+
+  if(s.includes("dota")){
+    return "🛡️";
+  }
+
+  if(
+    s.includes("cs") ||
+    s.includes("counter")
+  ){
+    return "🎯";
+  }
+
+  if(
+    s.includes("lol") ||
+    s.includes("league")
+  ){
+    return "⚔️";
+  }
+
+  if(
+    s.includes("rainbow") ||
+    s.includes("r6")
+  ){
+    return "🔫";
+  }
+
+  if(
+    s.includes("basketball")
+  ){
+    return "🏀";
+  }
+
+  if(
+    s.includes("football") ||
+    s.includes("soccer")
+  ){
+    return "⚽";
+  }
+
+  return "🎮";
+}
+
 
 function buildSports(){
 
@@ -1027,9 +2659,9 @@ function buildSports(){
     ...new Set(
       fixtures
         .map(
-          event =>
-            event.sport ||
-            event.category
+          e =>
+            e.sport ||
+            e.category
         )
         .filter(Boolean)
     )
@@ -1051,6 +2683,7 @@ function buildSports(){
       全部
     </button>`;
 
+
   sports.forEach(sport=>{
 
     html +=
@@ -1060,7 +2693,8 @@ function buildSports(){
             ? "active"
             : ""
         }"
-        onclick='selectSport(${JSON.stringify(sport)})'>
+        onclick='selectSport(${JSON.stringify(sport)})'
+      >
         ${getSportIcon(sport)}
         ${escapeHtml(
           translateSport(sport)
@@ -1068,50 +2702,16 @@ function buildSports(){
       </button>`;
   });
 
-  container.innerHTML = html;
-}
 
-
-function getSportIcon(sport){
-
-  const s =
-    String(
-      sport || ""
-    ).toLowerCase();
-
-  if(s.includes("dota"))
-    return "🛡️";
-
-  if(
-    s.includes("cs") ||
-    s.includes("counter")
-  )
-    return "🎯";
-
-  if(
-    s.includes("lol") ||
-    s.includes("league")
-  )
-    return "⚔️";
-
-  if(
-    s.includes("rainbow") ||
-    s.includes("r6")
-  )
-    return "🔫";
-
-  if(
-    s.includes("valorant")
-  )
-    return "🔥";
-
-  return "🎮";
+  container.innerHTML =
+    html;
 }
 
 
 function selectSport(sport){
 
-  currentSport = sport;
+  currentSport =
+    sport;
 
   buildSports();
   filterFixtures();
@@ -1131,10 +2731,10 @@ function filterFixtures(){
 
     filteredFixtures =
       fixtures.filter(
-        event =>
+        e =>
           (
-            event.sport ||
-            event.category
+            e.sport ||
+            e.category
           ) === currentSport
       );
   }
@@ -1145,8 +2745,11 @@ function filterFixtures(){
 
 function switchEventType(type){
 
-  currentType = type;
-  currentSport = "全部";
+  currentType =
+    type;
+
+  currentSport =
+    "全部";
 
   document.getElementById(
     "tabLive"
@@ -1173,9 +2776,9 @@ function switchEventType(type){
 }
 
 
-/* =========================================================
+/* =====================================================
    队伍
-========================================================= */
+===================================================== */
 
 function getTeams(event){
 
@@ -1196,19 +2799,21 @@ function getTeams(event){
       ? event.competitors
       : [];
 
+
   if(competitors.length){
 
     const homeComp =
       competitors.find(
-        x =>
-          x.is_home === true
+        c =>
+          c.is_home === true
       );
 
     const awayComp =
       competitors.find(
-        x =>
-          x.is_home === false
+        c =>
+          c.is_home === false
       );
+
 
     home =
       homeComp?.name ||
@@ -1223,6 +2828,7 @@ function getTeams(event){
       "客队";
   }
 
+
   return {
     home,
     away
@@ -1230,9 +2836,9 @@ function getTeams(event){
 }
 
 
-/* =========================================================
+/* =====================================================
    渲染赛事
-========================================================= */
+===================================================== */
 
 function renderFixtures(){
 
@@ -1251,6 +2857,7 @@ function renderFixtures(){
     return;
   }
 
+
   list.innerHTML =
     filteredFixtures
       .map(
@@ -1264,15 +2871,11 @@ function renderFixtures(){
 }
 
 
-function renderEvent(event,index){
+function renderEvent(event,eventIndex){
 
   const teams =
     getTeams(event);
 
-  /*
-    联赛名称可能是官方赛事专有名称，
-    不强制翻译，避免显示错误。
-  */
   const league =
     event.league ||
     event.competition ||
@@ -1293,8 +2896,9 @@ function renderEvent(event,index){
 
   let marketsHtml = "";
 
+
   markets
-    .slice(0,4)
+    .slice(0,6)
     .forEach(
       (market,marketIndex)=>{
 
@@ -1307,80 +2911,81 @@ function renderEvent(event,index){
 
         const valid =
           selections.filter(
-            selection =>
-              Number(
-                selection.price
-              ) > 1
+            s =>
+              Number(s.price) > 1
           );
 
-        if(!valid.length)
+
+        if(!valid.length){
           return;
+        }
 
-        const marketRaw =
-          market.market ||
-          market.canonical ||
-          "比赛盘口";
 
-        marketsHtml +=
-          `<div class="market-title">
-            <span>
-              ${escapeHtml(
-                translateMarket(
-                  marketRaw
-                )
-              )}
-            </span>
+        const marketName =
+          translateMarket(
+            market.market ||
+            market.canonical
+          );
 
-            <span>
-              可下注
-            </span>
-          </div>`;
 
-        marketsHtml +=
-          `<div class="odds-grid">`;
+        marketsHtml += `
+          <div class="market-block">
+
+            <div class="market-head">
+
+              <div class="market-name">
+                ${escapeHtml(
+                  marketName
+                )}
+              </div>
+
+              <div class="market-actions">
+
+                <button
+                  class="help-btn"
+                  onclick="openHelp(
+                    ${eventIndex},
+                    ${marketIndex}
+                  )"
+                >
+                  ? 玩法
+                </button>
+
+                <span class="market-open">
+                  可下注
+                </span>
+
+              </div>
+
+            </div>
+
+            <div class="odds-grid">
+        `;
+
 
         valid
-          .slice(0,6)
+          .slice(0,8)
           .forEach(
             (selection,selectionIndex)=>{
 
-              const rawName =
-                selection.name ||
-                selection.side ||
-                "选项";
-
-              let displayName =
-                translateSelection(
-                  rawName
+              const display =
+                buildSelectionDisplay(
+                  selection,
+                  market,
+                  event
                 );
-
-              /*
-                line单独返回时添加到选项后面。
-              */
-              if(
-                selection.line !== null &&
-                selection.line !== undefined &&
-                selection.line !== "" &&
-                !displayName.includes(
-                  String(selection.line)
-                )
-              ){
-
-                displayName +=
-                  " " +
-                  selection.line;
-              }
 
               const price =
                 Number(
                   selection.price
                 );
 
-              marketsHtml +=
-                `<button
+
+              marketsHtml += `
+                <button
                   class="odd"
                   onclick="chooseBet(
-                    ${index},
+                    ${eventIndex},
                     ${marketIndex},
                     ${selectionIndex}
                   )"
@@ -1388,30 +2993,48 @@ function renderEvent(event,index){
 
                   <div class="odd-name">
                     ${escapeHtml(
-                      displayName
+                      display.title
                     )}
                   </div>
+
+                  ${
+                    display.hint
+                      ? `
+                        <div class="odd-hint">
+                          ${escapeHtml(
+                            display.hint
+                          )}
+                        </div>
+                      `
+                      : ""
+                  }
 
                   <div class="odd-price">
                     ${price.toFixed(2)}
                   </div>
 
-                </button>`;
+                </button>
+              `;
             }
           );
 
-        marketsHtml +=
-          `</div>`;
+
+        marketsHtml += `
+            </div>
+          </div>
+        `;
       }
     );
+
 
   if(!marketsHtml){
 
     marketsHtml =
-      `<div class="market-title">
-        <span>当前暂无开放盘口</span>
+      `<div class="no-market">
+        当前暂无开放盘口
       </div>`;
   }
+
 
   const score =
     event.score || {};
@@ -1421,6 +3044,7 @@ function renderEvent(event,index){
 
   const awayScore =
     score.away ?? "";
+
 
   return `
     <div class="match">
@@ -1459,6 +3083,7 @@ function renderEvent(event,index){
 
       </div>
 
+
       <div class="teams">
 
         <div class="team">
@@ -1471,13 +3096,12 @@ function renderEvent(event,index){
 
           <span class="score">
             ${escapeHtml(
-              String(
-                homeScore
-              )
+              String(homeScore)
             )}
           </span>
 
         </div>
+
 
         <div class="team">
 
@@ -1489,9 +3113,7 @@ function renderEvent(event,index){
 
           <span class="score">
             ${escapeHtml(
-              String(
-                awayScore
-              )
+              String(awayScore)
             )}
           </span>
 
@@ -1506,9 +3128,9 @@ function renderEvent(event,index){
 }
 
 
-/* =========================================================
-   选择盘口
-========================================================= */
+/* =====================================================
+   选择投注
+===================================================== */
 
 function chooseBet(
   eventIndex,
@@ -1521,70 +3143,55 @@ function chooseBet(
       eventIndex
     ];
 
-  if(!event)
+  if(!event){
     return;
+  }
+
 
   const market =
     event.markets?.[
       marketIndex
     ];
 
-  if(!market)
+  if(!market){
     return;
+  }
+
 
   /*
-    必须与renderEvent使用相同过滤，
-    保证点击索引正确。
+    与显示时保持同样过滤顺序
   */
+
   const validSelections =
     (
       market.selections || []
     ).filter(
-      selection =>
-        Number(
-          selection.price
-        ) > 1
+      s =>
+        Number(s.price) > 1
     );
+
 
   const selection =
     validSelections[
       selectionIndex
     ];
 
-  if(!selection)
+  if(!selection){
     return;
+  }
+
 
   const teams =
     getTeams(event);
 
-  const rawSelection =
-    selection.name ||
-    selection.side ||
-    "选项";
 
-  let selectionChinese =
-    translateSelection(
-      rawSelection
+  const display =
+    buildSelectionDisplay(
+      selection,
+      market,
+      event
     );
 
-  if(
-    selection.line !== null &&
-    selection.line !== undefined &&
-    selection.line !== "" &&
-    !selectionChinese.includes(
-      String(selection.line)
-    )
-  ){
-
-    selectionChinese +=
-      " " +
-      selection.line;
-  }
-
-  const rawMarket =
-    market.market ||
-    market.canonical ||
-    "比赛盘口";
 
   selectedBet = {
 
@@ -1616,17 +3223,14 @@ function chooseBet(
     away_team:
       teams.away,
 
-    /*
-      数据库存中文显示名。
-      当前为模拟下注，不影响Oddiwire。
-    */
     market:
       translateMarket(
-        rawMarket
+        market.market ||
+        market.canonical
       ),
 
     selection:
-      selectionChinese,
+      display.title,
 
     odds:
       Number(
@@ -1634,14 +3238,15 @@ function chooseBet(
       )
   };
 
+
   renderSlip();
   openBetModal();
 }
 
 
-/* =========================================================
+/* =====================================================
    投注单
-========================================================= */
+===================================================== */
 
 function renderSlip(){
 
@@ -1649,6 +3254,7 @@ function renderSlip(){
     document.getElementById(
       "slipContent"
     );
+
 
   if(!selectedBet){
 
@@ -1661,6 +3267,7 @@ function renderSlip(){
 
     return;
   }
+
 
   container.innerHTML = `
     <div class="bet-card">
@@ -1692,20 +3299,15 @@ function renderSlip(){
         )}
 
         <b style="color:#ffd45d">
-
           @
           ${selectedBet.odds.toFixed(2)}
-
         </b>
 
       </div>
 
       <button
         class="btn btn-gold"
-        style="
-          width:100%;
-          margin-top:16px
-        "
+        style="width:100%;margin-top:16px"
         onclick="openBetModal()"
       >
         立即模拟投注
@@ -1716,14 +3318,15 @@ function renderSlip(){
 }
 
 
-/* =========================================================
+/* =====================================================
    投注弹窗
-========================================================= */
+===================================================== */
 
 function openBetModal(){
 
-  if(!selectedBet)
+  if(!selectedBet){
     return;
+  }
 
   document.getElementById(
     "modalMatch"
@@ -1732,6 +3335,7 @@ function openBetModal(){
     " VS " +
     selectedBet.away_team;
 
+
   document.getElementById(
     "modalSelection"
   ).textContent =
@@ -1739,20 +3343,25 @@ function openBetModal(){
     " · " +
     selectedBet.selection;
 
+
   document.getElementById(
     "modalOdds"
   ).textContent =
     "赔率 " +
     selectedBet.odds.toFixed(2);
 
+
   document.getElementById(
     "stakeInput"
-  ).value = "";
+  ).value =
+    "";
+
 
   document.getElementById(
     "returnValue"
   ).textContent =
     "0.00 USDT";
+
 
   document.getElementById(
     "betModal"
@@ -1776,7 +3385,8 @@ function quickStake(amount){
 
   document.getElementById(
     "stakeInput"
-  ).value = amount;
+  ).value =
+    amount;
 
   calculateReturn();
 }
@@ -1784,8 +3394,9 @@ function quickStake(amount){
 
 function calculateReturn(){
 
-  if(!selectedBet)
+  if(!selectedBet){
     return;
+  }
 
   const stake =
     Number(
@@ -1794,26 +3405,28 @@ function calculateReturn(){
       ).value
     ) || 0;
 
-  const value =
-    stake *
-    selectedBet.odds;
 
   document.getElementById(
     "returnValue"
   ).textContent =
-    value.toFixed(2) +
+    (
+      stake *
+      selectedBet.odds
+    ).toFixed(2) +
     " USDT";
 }
 
 
-/* =========================================================
-   提交模拟投注
-========================================================= */
+/* =====================================================
+   提交投注
+===================================================== */
 
 async function submitBet(){
 
-  if(!selectedBet)
+  if(!selectedBet){
     return;
+  }
+
 
   const stake =
     Number(
@@ -1821,6 +3434,7 @@ async function submitBet(){
         "stakeInput"
       ).value
     );
+
 
   if(
     !stake ||
@@ -1834,15 +3448,18 @@ async function submitBet(){
     return;
   }
 
+
   const button =
     document.getElementById(
       "submitBetBtn"
     );
 
-  button.disabled = true;
+  button.disabled =
+    true;
 
   button.textContent =
     "正在提交...";
+
 
   try{
 
@@ -1854,11 +3471,12 @@ async function submitBet(){
 
           body:JSON.stringify({
             ...selectedBet,
-            stake:stake,
+            stake,
             init_data:initData
           })
         }
       );
+
 
     if(account){
 
@@ -1866,11 +3484,13 @@ async function submitBet(){
         data.balance;
     }
 
+
     updateAccountUI();
 
     closeBetModal();
 
-    selectedBet = null;
+    selectedBet =
+      null;
 
     renderSlip();
 
@@ -1880,6 +3500,7 @@ async function submitBet(){
 
     await loadBets();
 
+
   }catch(error){
 
     toast(
@@ -1887,9 +3508,11 @@ async function submitBet(){
       "投注失败"
     );
 
+
   }finally{
 
-    button.disabled = false;
+    button.disabled =
+      false;
 
     button.textContent =
       "确认模拟投注";
@@ -1897,9 +3520,9 @@ async function submitBet(){
 }
 
 
-/* =========================================================
+/* =====================================================
    我的投注
-========================================================= */
+===================================================== */
 
 async function loadBets(){
 
@@ -1908,10 +3531,12 @@ async function loadBets(){
       "betsList"
     );
 
+
   container.innerHTML =
     `<div class="loader">
       正在读取投注记录...
     </div>`;
+
 
   try{
 
@@ -1920,12 +3545,14 @@ async function loadBets(){
         "/api/bets"
       );
 
+
     const bets =
       Array.isArray(
         data.bets
       )
         ? data.bets
         : [];
+
 
     if(!bets.length){
 
@@ -1937,13 +3564,12 @@ async function loadBets(){
       return;
     }
 
+
     container.innerHTML =
       bets
-        .map(
-          bet =>
-            renderBet(bet)
-        )
+        .map(renderBet)
         .join("");
+
 
   }catch(error){
 
@@ -1954,6 +3580,42 @@ async function loadBets(){
         )}
       </div>`;
   }
+}
+
+
+function translateBetStatus(value){
+
+  const s =
+    lower(value);
+
+  const map = {
+
+    "pending":"待结算",
+    "open":"待结算",
+    "active":"进行中",
+
+    "won":"已赢",
+    "win":"已赢",
+
+    "lost":"已输",
+    "lose":"已输",
+
+    "void":"已取消",
+
+    "cancelled":"已取消",
+    "canceled":"已取消",
+
+    "refunded":"已退款",
+
+    "settled":"已结算"
+  };
+
+
+  return (
+    map[s] ||
+    value ||
+    "待结算"
+  );
 }
 
 
@@ -1983,32 +3645,28 @@ function renderBet(bet){
 
       </div>
 
+
       <div class="bet-match">
 
         ${escapeHtml(
-          bet.home_team ||
-          ""
+          bet.home_team || ""
         )}
 
         VS
 
         ${escapeHtml(
-          bet.away_team ||
-          ""
+          bet.away_team || ""
         )}
 
       </div>
+
 
       <div class="bet-selection">
-
         ${escapeHtml(
-          translateSelection(
-            bet.selection ||
-            ""
-          )
+          bet.selection || ""
         )}
-
       </div>
+
 
       <div class="bet-numbers">
 
@@ -2046,9 +3704,26 @@ function renderBet(bet){
 }
 
 
-/* =========================================================
-   页面导航
-========================================================= */
+/* =====================================================
+   教程
+===================================================== */
+
+function toggleTutorial(element){
+
+  const card =
+    element.closest(
+      ".tutorial-card"
+    );
+
+  card.classList.toggle(
+    "open"
+  );
+}
+
+
+/* =====================================================
+   页面
+===================================================== */
 
 function showPage(page){
 
@@ -2057,26 +3732,24 @@ function showPage(page){
       ".page"
     )
     .forEach(
-      element =>
-        element
-          .classList
-          .remove(
-            "active"
-          )
+      el =>
+        el.classList.remove(
+          "active"
+        )
     );
+
 
   document
     .querySelectorAll(
       ".nav"
     )
     .forEach(
-      element =>
-        element
-          .classList
-          .remove(
-            "active"
-          )
+      el =>
+        el.classList.remove(
+          "active"
+        )
     );
+
 
   document.getElementById(
     "page-" + page
@@ -2084,16 +3757,18 @@ function showPage(page){
     "active"
   );
 
+
   document.getElementById(
     "nav-" + page
   ).classList.add(
     "active"
   );
 
-  if(page === "bets"){
 
+  if(page === "bets"){
     loadBets();
   }
+
 
   window.scrollTo(
     0,
@@ -2102,9 +3777,9 @@ function showPage(page){
 }
 
 
-/* =========================================================
+/* =====================================================
    模拟充值
-========================================================= */
+===================================================== */
 
 function demoRecharge(){
 
@@ -2114,59 +3789,29 @@ function demoRecharge(){
 }
 
 
-/* =========================================================
-   工具
-========================================================= */
-
-function escapeHtml(value){
-
-  return String(
-    value ?? ""
-  )
-    .replaceAll(
-      "&",
-      "&amp;"
-    )
-    .replaceAll(
-      "<",
-      "&lt;"
-    )
-    .replaceAll(
-      ">",
-      "&gt;"
-    )
-    .replaceAll(
-      '"',
-      "&quot;"
-    )
-    .replaceAll(
-      "'",
-      "&#039;"
-    );
-}
-
+/* =====================================================
+   提示
+===================================================== */
 
 function toast(message){
 
-  const element =
+  const el =
     document.getElementById(
       "toast"
     );
 
-  element.textContent =
+  el.textContent =
     message;
 
-  element.classList.add(
+  el.classList.add(
     "show"
   );
 
   setTimeout(
     ()=>{
-
-      element.classList.remove(
+      el.classList.remove(
         "show"
       );
-
     },
     2500
   );
@@ -2192,30 +3837,33 @@ function showFatal(message){
     <div
       class="auth-text"
       style="
-        max-width:280px;
+        max-width:290px;
         text-align:center;
         line-height:1.7
       "
     >
-      ${escapeHtml(
-        message
-      )}
+      ${escapeHtml(message)}
+    </div>
+
+    <div class="version">
+      版本 2.0 中文新手版
     </div>
   `;
 }
 
 
-/* =========================================================
+/* =====================================================
    启动
-========================================================= */
+===================================================== */
 
 async function boot(){
 
   const ok =
     initTelegram();
 
-  if(!ok)
+  if(!ok){
     return;
+  }
 
   await loadAccount();
 }
