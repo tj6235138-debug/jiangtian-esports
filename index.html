@@ -854,7 +854,7 @@ button{
   <div class="auth-logo">ϟ</div>
   <div class="auth-title">姜天电竞</div>
   <div class="auth-text">正在验证 Telegram 账户...</div>
-  <div class="version">版本 2.0 中文新手版</div>
+  <div class="version">版本 2.1 中文增强版</div>
 </div>
 
 <div id="toast" class="toast"></div>
@@ -1219,7 +1219,7 @@ button{
 
     <div class="profile-row">
       <span class="profile-label">当前版本</span>
-      <span>2.0 中文新手版</span>
+      <span>2.1 中文增强版</span>
     </div>
 
   </div>
@@ -1351,7 +1351,7 @@ button{
   前端版本
   每次大更新修改这个数字。
 */
-const APP_VERSION = "2.0.20261006";
+const APP_VERSION = "2.1.20261006";
 
 const API_BASE =
   "https://telegram-bot-production-1a67.up.railway.app";
@@ -1472,6 +1472,83 @@ function translateSport(value){
 /* =====================================================
    盘口翻译
 ===================================================== */
+
+/* =====================================================
+   赛事 / 联赛名称中文化
+   战队名、选手名保持官方名称，只翻译赛事描述词
+===================================================== */
+
+function translateLeague(value){
+
+  let result = text(value);
+
+  if(!result){
+    return "电竞赛事";
+  }
+
+  const rules = [
+    [/Closed Qualifier/gi,"封闭预选赛"],
+    [/Open Qualifier/gi,"公开预选赛"],
+    [/Regional Qualifier/gi,"地区预选赛"],
+    [/Main Qualifier/gi,"主赛事预选赛"],
+    [/Final Qualifier/gi,"最终预选赛"],
+    [/Qualifier/gi,"预选赛"],
+    [/Group Stage/gi,"小组赛"],
+    [/Group Phase/gi,"小组赛"],
+    [/Play-?in Stage/gi,"入围赛"],
+    [/Play-?in/gi,"入围赛"],
+    [/Knockout Stage/gi,"淘汰赛"],
+    [/Playoffs?/gi,"季后赛"],
+    [/Round of 64/gi,"64强"],
+    [/Round of 32/gi,"32强"],
+    [/Round of 16/gi,"16强"],
+    [/Quarter[\s-]?finals?/gi,"四分之一决赛"],
+    [/Semi[\s-]?finals?/gi,"半决赛"],
+    [/Grand Finals?/gi,"总决赛"],
+    [/Upper Bracket Finals?/gi,"胜者组决赛"],
+    [/Lower Bracket Finals?/gi,"败者组决赛"],
+    [/Upper Bracket/gi,"胜者组"],
+    [/Lower Bracket/gi,"败者组"],
+    [/Winners? Bracket/gi,"胜者组"],
+    [/Losers? Bracket/gi,"败者组"],
+    [/Finals?/gi,"决赛"],
+    [/Regular Season/gi,"常规赛"],
+    [/Promotion/gi,"晋级赛"],
+    [/Relegation/gi,"保级赛"],
+    [/Show ?Match/gi,"表演赛"],
+    [/Friendly Match/gi,"友谊赛"],
+    [/Friendly/gi,"友谊赛"],
+    [/Placement Match/gi,"排位赛"],
+    [/Round Robin/gi,"循环赛"],
+    [/Week\s*#?\s*(\d+)/gi,"第$1周"],
+    [/Season\s*#?\s*(\d+)/gi,"第$1赛季"],
+    [/Division\s*1/gi,"甲级"],
+    [/Division\s*2/gi,"乙级"],
+    [/World Championships?/gi,"世界锦标赛"],
+    [/World Cup/gi,"世界杯"],
+    [/Champions League/gi,"冠军联赛"],
+    [/European League/gi,"欧洲联赛"],
+    [/Euroleague/gi,"欧洲篮球联赛"],
+    [/Pro League/gi,"职业联赛"],
+    [/Premier League/gi,"超级联赛"],
+    [/Super League/gi,"超级联赛"],
+    [/Championship/gi,"锦标赛"],
+    [/Invitational/gi,"邀请赛"],
+    [/Masters/gi,"大师赛"]
+  ];
+
+  rules.forEach(([pattern,chinese]) => {
+    result = result.replace(pattern,chinese);
+  });
+
+  result = result
+    .replace(/\s*:\s*/g,"：")
+    .replace(/\s+/g," ")
+    .trim();
+
+  return result;
+}
+
 
 function translateMarket(value){
 
@@ -3062,7 +3139,7 @@ function renderEvent(event,eventIndex){
           ·
 
           ${escapeHtml(
-            String(league)
+            translateLeague(league)
           )}
 
         </div>
@@ -3846,7 +3923,7 @@ function showFatal(message){
     </div>
 
     <div class="version">
-      版本 2.0 中文新手版
+      版本 2.1 中文增强版
     </div>
   `;
 }
